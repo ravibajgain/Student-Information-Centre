@@ -6,14 +6,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.webapp.student.dao.UserDAO;
+import com.webapp.student.service.UserService;
 
 @Controller
 @RequestMapping("/user")
 public class UserController {
 
 	@Autowired
-	private UserDAO userDAO;
+	private UserService userService;
 
 	@GetMapping("/signup")
 	public String createAccount(Model theModel) {
@@ -24,6 +24,14 @@ public class UserController {
 	@GetMapping("/login")
 	public String login(Model theModel) {
 		return "login";
+	}
+	
+	@GetMapping("/list")
+	public String displayUsers(Model theModel) {
+		userService.getUsers();
+		
+		
+		return "";
 	}
 
 }

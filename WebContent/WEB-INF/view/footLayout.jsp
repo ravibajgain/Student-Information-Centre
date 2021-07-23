@@ -20,7 +20,7 @@
         		<h4>Nepalam student Information Centre</h4>
         		
         	</div>
-		</div>
+		<div>
         </div>
     </nav>
     <div class="text-center">All rights reserved Nepalam</div>

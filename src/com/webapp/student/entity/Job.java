@@ -2,11 +2,15 @@ package com.webapp.student.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -46,6 +50,10 @@ public class Job {
 
 	@Column(name = "posted_date")
 	LocalDate date = LocalDate.now();
+	
+	@ManyToOne(fetch=FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="user_id")
+	private User userDetail;
 
 	public Job() {
 
@@ -107,10 +115,18 @@ public class Job {
 		this.date = date;
 	}
 
+	public User getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(User userDetail) {
+		this.userDetail = userDetail;
+	}
+
 	@Override
 	public String toString() {
 		return "Job [id=" + id + ", jobType=" + jobType + ", payRate=" + payRate + ", email=" + email + ", description="
-				+ description + ", location=" + location + ", date=" + date + "]";
+				+ description + ", location=" + location + ", date=" + date + ", userDetail=" + userDetail + "]";
 	}
 
 }

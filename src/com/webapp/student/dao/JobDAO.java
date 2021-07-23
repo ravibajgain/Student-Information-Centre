@@ -9,4 +9,6 @@ public interface JobDAO {
 	public List<Job> getjobs();
 
 	public void saveJobs(Job theJob);
+
+	public List<Job> getMyJobs();
 }

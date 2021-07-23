@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.webapp.student.entity.Job;
+import com.webapp.student.entity.User;
 
 @Repository
 public class JobDAOImpl implements JobDAO {
@@ -29,11 +30,25 @@ public class JobDAOImpl implements JobDAO {
 	public void saveJobs(Job theJob) {
 		// get the hibernate session
 		Session currentSession = sessionFactory.getCurrentSession();
-		
-		//saving using hibernate 
-		
+		int theId = 1;
+		User tempUser = currentSession.get(User.class, theId);
+		tempUser.addJobs(theJob);
+
+		// saving using hibernate
+
 		currentSession.save(theJob);
+
+	}
+
+	@Override
+	public List<Job> getMyJobs() {
+		Session currentSession = sessionFactory.getCurrentSession();
+		int theId = 1;
+		User tempUser = currentSession.get(User.class, theId);
 		
+		List<Job> jobs = tempUser.getJobLists();
+
+		return jobs;
 	}
 
 }

@@ -26,9 +26,13 @@ public class UserDAOImpl implements UserDAO {
 
 		// create Query
 		Query<User> theQuery = currentSession.createQuery("from User", User.class);
-
+		int id= 1;
+		User tempUser = currentSession.get(User.class, id);
+		System.out.println("list of jobs belonging to this user "+tempUser.getJobLists());
+		
 		// execute query and get results
 		List<User> users = theQuery.getResultList();
+		
 
 		// return the results
 		return users;

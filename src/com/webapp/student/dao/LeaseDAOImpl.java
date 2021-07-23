@@ -9,30 +9,36 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.webapp.student.entity.Lease;
+//import com.webapp.student.entity.User;
 
 @Repository
 public class LeaseDAOImpl implements LeaseDAO {
 
 	@Autowired
-	private SessionFactory  sessionFactory;
+	private SessionFactory sessionFactory;
+		
 	@Override
-	
+
 	public List<Lease> getleases() {
-		
+
 		Session currentSession = sessionFactory.getCurrentSession();
-		
-		Query<Lease> theQuery = currentSession.createQuery("from Lease",Lease.class);
-		
+		// SessionFactory factory = new Configuration().addAnnotatedClass(User.class)
+
+		Query<Lease> theQuery = currentSession.createQuery("from Lease", Lease.class);
+
 		List<Lease> leases = theQuery.getResultList();
-		
-		
+
 		return leases;
 	}
+
 	@Override
 	public void getLeases(Lease theLease) {
 		Session currentSession = sessionFactory.getCurrentSession();
-		currentSession.save(theLease);
 		
+		//SessionFactory fac = (SessionFactory) new Configuration().addAnnotatedClass(User.class);
+		//theLease.setUserID(theUser);
+		currentSession.save(theLease);
+
 	}
 
 }

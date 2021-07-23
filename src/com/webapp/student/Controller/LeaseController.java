@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.webapp.student.entity.Lease;
+//import com.webapp.student.entity.User;
 import com.webapp.student.service.LeaseService;
 
 @Controller
@@ -25,6 +26,10 @@ public class LeaseController {
 
 	@Autowired
 	private LeaseService leaseService;
+
+	/*
+	 * @Autowired private User theuser;
+	 */
 
 	@GetMapping("/list")
 	public String displayLease(Model theModel) {
@@ -61,6 +66,7 @@ public class LeaseController {
 			return "add-lease";
 		} else {
 
+			// theLease.setUserID(theuser);
 			leaseService.saveLeases(theLease);
 
 			return "redirect:/lease/list";

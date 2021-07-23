@@ -1,10 +1,13 @@
 package com.webapp.student.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotNull;
@@ -39,6 +42,11 @@ public class Info {
 	@NotNull(message = "Required field")
 	private String description;
 
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="user_id")
+	private User userDetail;
+	
+	
 	public Info() {
 
 	}
@@ -93,11 +101,22 @@ public class Info {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+
+	public User getUseretail() {
+		return userDetail;
+	}
+
+
+	public void setUserDetail(User userDetail) {
+		this.userDetail = userDetail;
+	}
+
 
 	@Override
 	public String toString() {
 		return "Info [id=" + id + ", email=" + email + ", serviceType=" + serviceType + ", mobile=" + mobile + ", name="
-				+ name + ", description=" + description + "]";
+				+ name + ", description=" + description + ", user_detail=" + userDetail + "]";
 	}
 
 }

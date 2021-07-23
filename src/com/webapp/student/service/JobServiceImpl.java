@@ -31,4 +31,10 @@ public class JobServiceImpl implements JobService {
 		
 	}
 
+	@Override
+	@Transactional
+	public List<Job> getMyJobs() {
+		return jobDAO.getMyJobs();
+	}
+
 }

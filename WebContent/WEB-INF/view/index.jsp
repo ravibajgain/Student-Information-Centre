@@ -23,12 +23,13 @@
 		<li><a href="${pageContext.request.contextPath}/secondhand/list">Marketplace</a></li>
 
 
--->
+
 
 
 
 
 	</ol>
+	-->
 	<hr>
 	<input type="button" value="Login" id="bt"
 		onclick="window.location.href='${pageContext.request.contextPath}/user/login';return false"

@@ -1,10 +1,13 @@
 package com.webapp.student.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -45,7 +48,11 @@ public class Rent {
 	@Column(name = "description")
 	@NotNull(message="Suburb required field")
 	private String description;
-
+	
+	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+	@JoinColumn(name="user_id")
+	private User userDetail;
+	
 	public Rent() {
 
 	}
@@ -113,11 +120,21 @@ public class Rent {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+
+	public User getUserDetail() {
+		return userDetail;
+	}
+
+	public void setUserDetail(User userDetail) {
+		this.userDetail = userDetail;
+	}
 
 	@Override
 	public String toString() {
 		return "Rent [id=" + id + ", state=" + state + ", price=" + price + ", bedroom=" + bedroom + ", parking="
-				+ parking + ", suburb=" + suburb + ", email=" + email + ", description=" + description + "]";
+				+ parking + ", suburb=" + suburb + ", email=" + email + ", description=" + description + ", userDetail="
+				+ userDetail + "]";
 	}
 
 }

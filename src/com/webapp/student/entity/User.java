@@ -1,10 +1,17 @@
 package com.webapp.student.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -30,8 +37,35 @@ public class User {
 	@Column(name = "mobile_no")
 	private int mobile_no;
 
+	@OneToOne(mappedBy = "userDetail", cascade = CascadeType.ALL)
+	private Lease lease;
+
+	@OneToMany(fetch=FetchType.EAGER, mappedBy = "userDetail", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
+	private List<Job> jobLists;
+
+	@OneToMany(mappedBy = "userDetail", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
+	private List<Rent> rentLists;
+
+	@OneToMany(mappedBy = "userDetail", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
+	private List<Sale> saleLists;
+
+	@OneToMany(mappedBy = "userDetail", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
+			CascadeType.REFRESH })
+	private List<Info> infoLists;
+
 	public User() {
 
+	}
+
+	public List<Job> getJobLists() {
+		return jobLists;
+	}
+
+	public void setJobLists(List<Job> jobLists) {
+		this.jobLists = jobLists;
 	}
 
 	public int getId() {
@@ -78,14 +112,78 @@ public class User {
 		return mobile_no;
 	}
 
-	public void setMobile_no(Integer mobile_no) {
+	public Lease getLease() {
+		return lease;
+	}
+
+	public void setLease(Lease lease) {
+		this.lease = lease;
+	}
+
+	public List<Rent> getRentLists() {
+		return rentLists;
+	}
+
+	public void setRentLists(List<Rent> rentLists) {
+		this.rentLists = rentLists;
+	}
+
+	public List<Sale> getSaleLists() {
+		return saleLists;
+	}
+
+	public void setSaleLists(List<Sale> saleLists) {
+		this.saleLists = saleLists;
+	}
+
+	public List<Info> getInfoLists() {
+		return infoLists;
+	}
+
+	public void setInfoLists(List<Info> infoLists) {
+		this.infoLists = infoLists;
+	}
+
+	public void setMobile_no(int mobile_no) {
 		this.mobile_no = mobile_no;
 	}
 
+	public void addJobs(Job tempJobs) {
+		if (jobLists == null) {
+			jobLists = new ArrayList<>();
+		}
+		jobLists.add(tempJobs);
+		tempJobs.setUserDetail(this);
+	}
+
+	public void addRents(Rent tempRents) {
+		if (rentLists == null) {
+			rentLists = new ArrayList<>();
+		}
+		rentLists.add(tempRents);
+		tempRents.setUserDetail(this);
+	}
+
+	public void add(Sale tempSales) {
+		if (saleLists == null) {
+			saleLists = new ArrayList<>();
+		}
+		saleLists.add(tempSales);
+		tempSales.setUserDetail(this);
+	}
+
+	public void add(Info tempInfos) {
+		if(infoLists == null ) {
+			infoLists = new ArrayList<>();
+		}
+		infoLists.add(tempInfos);
+		tempInfos.setUserDetail(this);
+	}
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email
-				+ ", address=" + address + ", mobile_no=" + mobile_no + "]";
+				+ ", address=" + address + ", mobile_no=" + mobile_no + ", lease=" + lease + ", jobLists=" + jobLists
+				+ ", rentLists=" + rentLists + ", saleLists=" + saleLists + ", infoLists=" + infoLists + "]";
 	}
 
 }

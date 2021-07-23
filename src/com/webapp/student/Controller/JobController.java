@@ -38,12 +38,20 @@ public class JobController {
 		return "job-list";
 	}
 
-	@GetMapping("/jobaddform")
+	@GetMapping("/jobaddForm")
 	public String jobAddForm(Model theModel) {
 		Job nextJob = new Job();
 		theModel.addAttribute("jobs", nextJob);
 		return "add-jobs";
 
+	}
+	
+	@GetMapping("/myjobList")
+	public String myjobList(Model theModel) {
+		List<Job> myList = jobService.getMyJobs();
+		theModel.addAttribute("jobs",myList);
+		
+		return "my-jobs";
 	}
 	//Init binder ... to convert trim input strings
 	

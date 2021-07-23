@@ -14,24 +14,19 @@
 		<input type="button" value="Click to  Add Jobs"
 			onclick="window.location.href ='jobaddForm'; return false;"
 			class="add-button" />
-		<p>
-		<input type="button" value="My Jobs"
-			onclick="window.location.href ='myjobList'; return false;"
-			class="add-button" /><div id="container">
-		<div id="content">
+	 	
 			<table>
 				<tr>
 					<th>Job ID</th>
 					<th>Job Type</th>
-					<th>Pay
-	 Rate</th>
+					<th>Pay Rate</th>
 					<th>Email</th>
 					<th>Description</th>
 					<th>Location</th>
 					<th> Job Posted date</th>
 				</tr>
 
-				<!--  loop over job detail -->
+			
 
 				<c:forEach var="tempJob" items="${jobs}">
 					<tr>
@@ -48,9 +43,9 @@
 
 			</table>
 
-		</div>
+		<div>
 	</div>
-	<a href="${pageContext.request.contextPath}/home/index">Home</a>
+	<a href="${pageContext.request.contextPath}/job/list">Jobs</a>
 	<%@include file="footLayout.jsp"%>
 
 </body>

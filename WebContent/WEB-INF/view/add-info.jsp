@@ -16,7 +16,7 @@
 	<%@include file="headLayout.jsp"%>
 	<h1>Add Information about Service</h1>
 	<div id="container">
-		<h2>Save Jobs</h2>
+		<h2>Save Information</h2>
 		<form:form action="saveInfos" modelAttribute="infos" method="POST">
 			<table>
 				<tbody>
