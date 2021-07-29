@@ -1,5 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +11,9 @@
 <body>
 	<%@include file="headLayout.jsp"%>
 	<h1>Under construction ....</h1>
-	<form action="Login" method="post">
+	<form:form
+		action="${pageContext.request.contextPath}/athenticateTheUser"
+		method="POST">
 		<table style="with: 50%">
 
 			<tr>
@@ -21,8 +25,8 @@
 				<td><input type="password" name="password" /></td>
 			</tr>
 		</table>
-		<input type="submit" value="Submit" />
-	</form>
+		<input type="submit" value="Login" />
+	</form:form>
 
 	<a href="${pageContext.request.contextPath}/user/signup">Create
 		account</a>

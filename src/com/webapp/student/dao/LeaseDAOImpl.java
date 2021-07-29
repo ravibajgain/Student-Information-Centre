@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.webapp.student.entity.Lease;
 //import com.webapp.student.entity.User;
+import com.webapp.student.entity.User;
 
 @Repository
 public class LeaseDAOImpl implements LeaseDAO {
@@ -39,6 +40,18 @@ public class LeaseDAOImpl implements LeaseDAO {
 		//theLease.setUserID(theUser);
 		currentSession.save(theLease);
 
+	}
+
+	@Override
+	public Lease getMyLeases() {
+		Session currentSession = sessionFactory.getCurrentSession();
+		int theId = 1;
+		User tempUser = currentSession.get(User.class, theId);
+		Lease leases = tempUser.getLease();
+
+
+		
+		return leases;
 	}
 
 }

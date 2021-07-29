@@ -28,4 +28,11 @@ public class LeaseServiceImpl implements LeaseService {
 		
 	}
 
+	@Override
+	@Transactional
+	public Lease getMyLeases() {
+		
+		return leaseDAO.getMyLeases();
+	}
+
 }

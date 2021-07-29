@@ -15,18 +15,10 @@
 
 	<h1>list of Items</h1>
 	<p>
-		
-		<input type="button"  value ="My Items" 
-		onclick = "window.location.href ='myitemList'; return false;" 
-		class="add-button"
-		/>
 
-	<p>
-		
-		<input type="button"  value ="Add Item" 
-		onclick = "window.location.href ='itemaddForm'; return false;" 
-		class="add-button"
-		/>
+		<input type="button" value="Add Item"
+			onclick="window.location.href ='itemaddForm'; return false;"
+			class="add-button" />
 	<div id="wrapper">
 		<div id="header">List of items</div>
 	</div>
@@ -63,7 +55,7 @@
 
 		</div>
 	</div>
-	<a href="${pageContext.request.contextPath}/home/index">Home</a>
+	<a href="${pageContext.request.contextPath}/sale/list">Return to market</a>
 	<%@include file="footLayout.jsp"%>
 
 </body>

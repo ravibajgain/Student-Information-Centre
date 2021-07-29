@@ -19,7 +19,7 @@
 	<h1>Loading....</h1>
 	<h2>Add information about Rent</h2>
 	<div id="container">
-		<h3>Save Jobs</h3>
+		<h3>Please Fill up form to begin with.... </h3>
 		<form:form action="saveRents" modelAttribute="rents" method="POST">
 			<table>
 				<tbody>
@@ -78,7 +78,7 @@
 			</table>
 		</form:form>
 	</div>
-	<a href="list">Click to display jobs</a>
+	<a href="list">Click to display available room for Rents</a>
 	<br>
 	<a href="${pageContext.request.contextPath}/home/index">Home</a>
 	<%@include file="footLayout.jsp"%>

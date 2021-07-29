@@ -10,6 +10,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.webapp.student.entity.Sale;
+import com.webapp.student.entity.User;
 
 @Repository
 public class SaleDAOImpl implements SaleDAO {
@@ -30,6 +31,15 @@ public class SaleDAOImpl implements SaleDAO {
 	public void saveItems(@Valid Sale theItem) {
 		Session currentSession = sessionFactory.getCurrentSession();
 		currentSession.save(theItem);		
+	}
+
+	@Override
+	public List<Sale> getMyitems() {
+		Session currentSession = sessionFactory.getCurrentSession();
+		int listId = 1;
+		User listUser = currentSession.get(User.class, listId);
+		List<Sale> items = listUser.getSaleLists();
+		return items;
 	}
 
 }

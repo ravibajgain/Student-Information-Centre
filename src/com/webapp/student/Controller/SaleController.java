@@ -55,5 +55,11 @@ public class SaleController {
 			return "redirect:/secondhand/list";
 		}
 	}
+	@GetMapping("/myitemList")
+	public String myItemList(Model theModel) {
+		List<Sale> mySale = saleService.getMyitems();
+		theModel.addAttribute("items", mySale);
+		return"my-items";
+	}
 		
 }

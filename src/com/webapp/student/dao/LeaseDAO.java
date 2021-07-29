@@ -9,4 +9,6 @@ public interface LeaseDAO {
 
 	public void getLeases(Lease theLease);
 
+	public Lease getMyLeases();
+
 }

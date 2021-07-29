@@ -28,4 +28,10 @@ public class SaleServiceImpl implements SaleService {
 		saleDAO.saveItems(theItem);
 	}
 
+	@Override
+	@Transactional
+	public List<Sale> getMyitems() {
+		return saleDAO.getMyitems();
+	}
+
 }

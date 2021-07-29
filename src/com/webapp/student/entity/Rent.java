@@ -20,7 +20,7 @@ public class Rent {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
 	private int id;
-	
+
 	@Column(name = "state")
 	private String state;
 
@@ -38,21 +38,21 @@ public class Rent {
 	private String parking;
 
 	@Column(name = "suburb")
-	@NotNull(message="Suburb required field")
+	@NotNull(message = "Suburb required field")
 	private String suburb;
 
 	@Column(name = "email")
-	@NotNull(message="Suburb required field")
+	@NotNull(message = "Suburb required field")
 	private String email;
 
 	@Column(name = "description")
-	@NotNull(message="Suburb required field")
+	@NotNull(message = "Suburb required field")
 	private String description;
-	
-	@ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
-	@JoinColumn(name="user_id")
+
+	@ManyToOne(cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH })
+	@JoinColumn(name = "user_id")
 	private User userDetail;
-	
+
 	public Rent() {
 
 	}
@@ -120,7 +120,6 @@ public class Rent {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
 
 	public User getUserDetail() {
 		return userDetail;

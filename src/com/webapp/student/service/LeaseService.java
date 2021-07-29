@@ -9,6 +9,8 @@ public interface LeaseService {
 
 	public void saveLeases(Lease theLease);
 
+	public Lease getMyLeases();
+
 	
 
 

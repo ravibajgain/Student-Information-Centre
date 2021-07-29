@@ -13,13 +13,8 @@
 	<%@include file="headLayout.jsp"%>
 	<h1>list of Rents</h1>
 	<p>
-		<input type="button" value="Add Rent Info"
+		<input  type="button" value="Add Rent Info"
 			onclick="window.location.href ='rentaddForm'; return false;"
-			class="add-button" />
-	</p>
-	<p>
-		<input type="button" value="My Renting info"
-			onclick="window.location.href ='myrentList'; return false;"
 			class="add-button" />
 	</p>
 
@@ -62,7 +57,13 @@
 
 		</div>
 	</div>
-	<a href="${pageContext.request.contextPath}/home/index">Home</a>
+	<p>
+		<input type="button" value="Back to Rent List"
+			onclick="window.location.href ='list'; return false;"
+			class="add-button" />
+	</p>
+	
+<!--  	<a href="${pageContext.request.contextPath}/rent/list">Back to Rent List</a>-->
 	<%@include file="footLayout.jsp"%>
 
 </body>

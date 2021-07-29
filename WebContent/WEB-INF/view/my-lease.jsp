@@ -7,35 +7,15 @@
 <meta charset="ISO-8859-1">
 <title>Lease List</title>
 <%@include file="headLayout.jsp"%>
-<!-- <style>
-.myButton {
-	float: centre;
-	margin-bottom: 10px;
-	margin-right:75;
-}
 
-.wrapper {
-	margin-top: 25px
-}
-</style>
- -->
 </head>
 <body>
-<div class="myButton">
-		<p>
-			<input type="button" value="My Lease"
-				onclick="window.location.href ='myleaseList'; return false;"
-				class="add-button" />
-	</div>
 
-	<h1>list of Lease</h1>
+
 	<p>
 		<input type="button" value="Click to  Add Lease"
 			onclick="window.location.href ='leaseaddForm'; return false;"
 			class="add-button" />
-	
-			
-	
 	<div id="wrapper">
 		<div id="header">List of Lease</div>
 	</div>
@@ -56,18 +36,17 @@
 
 				<!--  loop over job detail -->
 
-				<c:forEach var="tempLease" items="${leases}">
-					<tr>
-						<td>${tempLease.id }
-						<td>${tempLease.state}</td>
-						<td>${tempLease.price}</td>
-						<td>${tempLease.bedroom}</td>
-						<td>${tempLease.parking}</td>
-						<td>${tempLease.suburb}</td>
-						<td>${tempLease.email}</td>
 
-					</tr>
-				</c:forEach>
+				<tr>
+					<td>${leases.id }
+					<td>${leases.state}</td>
+					<td>${leases.price}</td>
+					<td>${leases.bedroom}</td>
+					<td>${leases.parking}</td>
+					<td>${leases.suburb}</td>
+					<td>${leases.email}</td>
+
+				</tr>
 
 			</table>
 
@@ -77,8 +56,8 @@
 
 	<!-- <a href="add">click to add new Lease</a> -->
 	<br>
-	<a href="${pageContext.request.contextPath}/home/index">Go back to
-		Home</a>
+	<a href="${pageContext.request.contextPath}/lease/list">Go back to
+		Lease list</a>
 	<%@include file="footLayout.jsp"%>
 
 </body>

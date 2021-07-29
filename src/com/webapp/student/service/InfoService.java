@@ -2,12 +2,10 @@ package com.webapp.student.service;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import com.webapp.student.entity.Info;
 
 public interface InfoService {
-public List<Info> getInfos();
+	public List<Info> getInfos();
 
-public void saveInfos(@Valid Info theInfo);
+	public void saveInfos(Info theInfo);
 }

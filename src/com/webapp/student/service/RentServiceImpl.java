@@ -27,5 +27,11 @@ public class RentServiceImpl implements RentService {
 		
 	}
 
+	@Override
+	@Transactional
+	public List<Rent> myRents() {
+		return rentDAO.myRents();
+	}
+
 	
 }

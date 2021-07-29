@@ -8,6 +8,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.webapp.student.entity.Rent;
+import com.webapp.student.entity.User;
 
 @Repository
 public class RentDAOImpl implements RentDAO {
@@ -33,5 +34,14 @@ public class RentDAOImpl implements RentDAO {
 
 	}
 
+	@Override
+	public List<Rent> myRents() {
+		Session currentSession = sessionFactory.getCurrentSession();
+		int nextId = 1;
+		User nextUser = currentSession.get(User.class, nextId);
+		List<Rent> rents = nextUser.getRentLists();
+
+		return rents;
+	}
+
 }
- 

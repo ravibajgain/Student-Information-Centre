@@ -66,5 +66,12 @@ public class RentController {
 		
 
 		}
+	
+	@GetMapping("/myrentList")
+	public String myRents(Model theModel) {
+		List <Rent> theRents = rentService.myRents();
+		theModel.addAttribute("rents", theRents);
+		return "my-rents";
+	}
 	}
 

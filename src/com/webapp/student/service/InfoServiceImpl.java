@@ -2,8 +2,6 @@ package com.webapp.student.service;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +14,7 @@ public class InfoServiceImpl implements InfoService {
 
 	@Autowired
 	private InfoDAO infoDAO;
-	
+
 	@Override
 	@Transactional
 	public List<Info> getInfos() {
@@ -25,9 +23,9 @@ public class InfoServiceImpl implements InfoService {
 
 	@Override
 	@Transactional
-	public void saveInfos(@Valid Info theInfo) {
+	public void saveInfos(Info theInfo) {
 		infoDAO.saveInfos(theInfo);
-		
+
 	}
 
 }

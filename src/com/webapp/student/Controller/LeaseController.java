@@ -74,5 +74,12 @@ public class LeaseController {
 		}
 
 	}
+	
+	@GetMapping("/myleaseList")
+	public String myLeaseList(Model theModel) {
+		Lease myLease = leaseService.getMyLeases();
+		theModel.addAttribute("leases", myLease);
+		return "my-lease";
+	}
 
 }

@@ -10,4 +10,6 @@ public interface RentService {
 
 	public void saveRents(Rent theRent);
 
+	public List<Rent> myRents();
+
 }

@@ -14,6 +14,9 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 @Entity
 @Table(name = "user")
 public class User {
@@ -40,16 +43,18 @@ public class User {
 	@OneToOne(mappedBy = "userDetail", cascade = CascadeType.ALL)
 	private Lease lease;
 
-	@OneToMany(fetch=FetchType.EAGER, mappedBy = "userDetail", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
-			CascadeType.REFRESH })
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "userDetail", cascade = { CascadeType.PERSIST, CascadeType.MERGE,
+			CascadeType.DETACH, CascadeType.REFRESH })
 	private List<Job> jobLists;
 
 	@OneToMany(mappedBy = "userDetail", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
 			CascadeType.REFRESH })
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Rent> rentLists;
 
 	@OneToMany(mappedBy = "userDetail", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
 			CascadeType.REFRESH })
+	@LazyCollection(LazyCollectionOption.FALSE)
 	private List<Sale> saleLists;
 
 	@OneToMany(mappedBy = "userDetail", cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH,
@@ -173,12 +178,13 @@ public class User {
 	}
 
 	public void add(Info tempInfos) {
-		if(infoLists == null ) {
+		if (infoLists == null) {
 			infoLists = new ArrayList<>();
 		}
 		infoLists.add(tempInfos);
 		tempInfos.setUserDetail(this);
 	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", first_name=" + first_name + ", last_name=" + last_name + ", email=" + email

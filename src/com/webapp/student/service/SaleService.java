@@ -11,4 +11,6 @@ public interface SaleService {
 
 	public void saveItems(@Valid Sale theItem);
 
+	public List<Sale> getMyitems();
+
 }
